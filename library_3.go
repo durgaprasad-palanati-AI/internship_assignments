@@ -71,6 +71,12 @@ func main() {
 			} else {
 				fmt.Println("book with", book_id, " id not found")
 			}
+			book_user_map := make(map[uint]uint)
+			book_user_map[user_id] = book_id
+			for key, value := range book_user_map {
+				fmt.Printf("user with id=%d borrowed book with id= %v\n", key, value)
+			}
 		}}
 	new_borrowbook.borrow_newbook(book_id, user_id) //calling method to add a new book
+
 }
