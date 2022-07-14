@@ -63,8 +63,13 @@ func main() {
 			//check book id and user id exists or not
 			if exist(book_ids, book_id) {
 				if exist(user_ids, user_id) {
-					user_bookids_map[user_id] = append(user_bookids_map[user_id], book_id)
-					fmt.Println(user_id, " borrowed book with id=", book_id)
+					if len(user_bookids_map[user_id]) < 2 {
+						user_bookids_map[user_id] = append(user_bookids_map[user_id], book_id)
+						fmt.Println(user_id, " borrowed book with id=", book_id)
+					} else {
+						fmt.Println(user_id, " reached limit to borrow book")
+					}
+
 				} else {
 					fmt.Println("user id not found")
 				}
